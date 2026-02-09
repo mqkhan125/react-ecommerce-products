@@ -1,53 +1,56 @@
-import axios from 'axios'
-import React, { useState, useEffect } from 'react'
+import axios from "axios";
+import React, { useState, useEffect } from "react";
 
 const Product = () => {
+  const [products, setProducts] = useState([]);
 
-  const [products, setProducts] = useState([])
-
-   const fetchProducts = async () => {
+  const fetchProducts = async () => {
     try {
-      let response = await axios.get('https://fakestoreapi.com/products')
-      console.log(response.data)
-      setProducts(response.data)
-      
+      let response = await axios("https://fakestoreapi.com/products");
+      setProducts(response.data);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
-    useEffect(() => {
-      fetchProducts()
-    },[])
+  };
+  useEffect(() => {
+    fetchProducts();
+  }, []);
 
   return (
-    <div className='max-w-full grid grid-cols-5 bg-amber-500 '>
-      {
-        products.map((product) => {
-          return (
-            <ProductsCard product={product} key={product.id} />
-          );
-        })
-      }
+    <div className="grid grid-cols-5 gap-4 p-6 bg-[#0c0c0c]">
+      {products.map((product) => {
+        return <ProductsCard product={product} key={product.id} />;
+      })}
     </div>
-  )
-}
+  );
+};
 
-const ProductsCard = ({product}) => {
-  return(
-   <div className='group bg-gray-700 rounded-lg'>
-    <img className='aspect-square object-contain p-4 group-hover:scale-95 transition-all duration-300' src={product.image} alt="" />
-    
-    <div className='p-4'>
-      <h1 className='text-2xl line-clamp-2 group-hover:text-blue-400 '>{product.title}</h1>
+const ProductsCard = ({ product }) => {
+  return (
+    <div className="group bg-gray-700 rounded-lg text-white">
+      <img
+        className="aspect-square object-contain p-4"
+        src={product.image}
+        alt=""
+      />
+
+      <div className="p-5">
+        <h1 className="text-2xl line-clamp-2 group-hover:text-blue-400">{product.title}</h1>
+
+        {/* rating and count of reviews */}
+        <div className="flex gap-3 my-3">
+          <p className="bg-green-600 w-fit py-1 px-4 rounded-lg flex items-center text-sm">
+            <span className="mb-1 me-1">⭐</span>
+            <span>{product.rating.rate}</span>
+          </p>
+          <p>{product.rating.count} reviews</p>
+        </div>
+
+        <p className="text-xl font-medium">${product.price}</p>
+      </div>
+
     </div>
-     
-     <div className='flex gap-5 py-3'>
-      <p className='bg-green-500 flex gap-4 items-center py-2 px-3'></p>
-      <span></span>
-      <span>{product.rating.rate}</span>
-     </div>
-   </div>
-  )
-}
+  );
+};
 
-export default Product
+export default Product;
