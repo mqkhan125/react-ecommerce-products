@@ -19,33 +19,56 @@ const SingleProducts = () => {
    },[])
 
 return (
-  <div className="group rounded-lg flex flex-col items-center justify-center py-10">
-    <img
-      className="aspect-square object-contain p-4 group-hover:scale-90 transition-all duration-400"
-      src={product?.image}
-      alt=""
-    />
-
-    <div className="p-5 flex flex-col items-center max-w-240">
-      <h1 className="text-4xl group-hover:text-blue-400">{product?.title}</h1>
-
-      {/* rating and count */}
-      <div className="flex gap-3 mt-7                 ">
-        <p className="bg-green-600 w-fit py-1 px-4 rounded-lg flex items-center text-xs">
-          <span>⭐</span>
-          <span>{product?.rating?.rate}</span>
-        </p>
-        <p>{product?.rating?.count}</p>
+  <div className="min-h-screen bg-[#0c0c0c] flex justify-center items-center p-6">
+    <div className="max-w-6xl w-full bg-gray-800 rounded-2xl shadow-xl grid grid-cols-1 md:grid-cols-2 gap-10 p-8">
+      {/* Product Image */}
+      <div className="flex justify-center items-center bg-gray-900 rounded-xl">
+        <img
+          src={product?.image}
+          alt={product?.title}
+          className="w-80 h-80 object-contain transition-transform duration-300 hover:scale-105"
+        />
       </div>
 
-      <p className="text-xl font-medium text-white/70 mt-3 mb-7">
-        {product?.price} Rs
-      </p>
+      {/* Product Details */}
+      <div className="flex flex-col text-white">
+        <h1 className="text-3xl font-semibold mb-4">{product?.title}</h1>
 
-      <p>{product?.description}</p>
+        {/* Rating */}
+        <div className="flex items-center gap-4 mb-4">
+          <span className="bg-green-600 px-3 py-1 rounded-lg text-sm flex items-center gap-1">
+            ⭐ {product?.rating?.rate}
+          </span>
+          <span className="text-white/70 text-sm">
+            {product?.rating?.count} reviews
+          </span>
+        </div>
+
+        {/* Price */}
+        <p className="text-4xl font-bold text-blue-400 mb-6">
+          ₹ {product?.price}
+        </p>
+
+        {/* Description */}
+        <p className="text-white/80 leading-relaxed mb-8">
+          {product?.description}
+        </p>
+
+        {/* Action Buttons */}
+        <div className="flex gap-4 mt-auto">
+          <button className="flex-1 bg-blue-600 hover:bg-blue-700 transition py-3 rounded-xl text-lg font-medium">
+            Add to Cart
+          </button>
+          <button className="flex-1 border border-blue-500 hover:bg-blue-500/10 transition py-3 rounded-xl text-lg font-medium">
+            Buy Now
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 );
+
+
 };
 
 export default SingleProducts

@@ -37,32 +37,41 @@ const ProductsCard = ({ product }) => {
   
   const navigate = useNavigate();
 
-  return (
-    <div onClick={() => navigate(`/product/${product.id}`)} className="group bg-gray-700 rounded-lg text-white">
-     
-      <img 
-        className="aspect-square object-contain p-4"
-        src={product.image}
-        alt=""
-      />
+ return (
+   <div
+     onClick={() => navigate(`/product/${product.id}`)}
+     className="group cursor-pointer bg-gray-800 rounded-xl overflow-hidden text-white 
+               shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
+   >
+     {/* Image */}
+     <div className="bg-gray-900 flex justify-center items-center p-4">
+       <img
+         className="h-52 object-contain transition-transform duration-300 group-hover:scale-110"
+         src={product.image}
+         alt={product.title}
+       />
+     </div>
 
-      <div className="p-5">
-        <h1 className="text-2xl line-clamp-2 group-hover:text-blue-400">{product.title}</h1>
+     {/* Content */}
+     <div className="p-5">
+       <h1 className="text-lg font-semibold line-clamp-2 group-hover:text-blue-400 transition">
+         {product.title}
+       </h1>
 
-        {/* rating and count of reviews */}
-        <div className="flex gap-3 my-3">
-          <p className="bg-green-600 w-fit py-1 px-4 rounded-lg flex items-center text-sm">
-            <span className="mb-1 me-1">⭐</span>
-            <span>{product.rating.rate}</span>
-          </p>
-          <p>{product.rating.count} reviews</p>
-        </div>
+       {/* Rating */}
+       <div className="flex items-center gap-3 my-3 text-sm">
+         <span className="bg-green-600 px-3 py-1 rounded-md flex items-center gap-1">
+           ⭐ {product.rating.rate}
+         </span>
+         <span className="text-white/70">{product.rating.count} reviews</span>
+       </div>
 
-        <p className="text-xl font-medium">${product.price}</p>
-      </div>
+       {/* Price */}
+       <p className="text-2xl font-bold text-blue-400">${product.price}</p>
+     </div>
+   </div>
+ );
 
-    </div>
-  );
 };
 
 export default Product;
