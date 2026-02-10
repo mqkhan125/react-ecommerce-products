@@ -1,22 +1,27 @@
 import React, {useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
+import Loader from './Loader';
 
 const SingleProducts = () => {
 
    const {id} = useParams()
    const [product, setProducts] = useState({})
-
+   const [loading, setLoading] = useState(false)
 
    const fetchData = async () => {
     // fetch single product data using id
+    setLoading(true)
     const response = await axios(`https://fakestoreapi.com/products/${id}`)
     setProducts(response.data)
+    setLoading(false)
    }
 
    useEffect(() => {
     fetchData()
    },[])
+
+     if (loading) return <Loader className={"p-30"} />;
 
 return (
   <div className="min-h-screen bg-[#0c0c0c] flex justify-center items-center p-6">
