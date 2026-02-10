@@ -1,13 +1,18 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
+import Loader from "./Loader";
+import { useNavigate } from "react-router-dom";
 
 const Product = () => {
   const [products, setProducts] = useState([]);
+  const [loading , setLoading] = useState(false);
 
   const fetchProducts = async () => {
     try {
+      setLoading(true);
       let response = await axios("https://fakestoreapi.com/products");
       setProducts(response.data);
+      setLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -15,6 +20,9 @@ const Product = () => {
   useEffect(() => {
     fetchProducts();
   }, []);
+
+  if(loading) return <Loader className={'p-30'}/>
+
 
   return (
     <div className="grid grid-cols-5 gap-4 p-6 bg-[#0c0c0c]">
@@ -26,9 +34,13 @@ const Product = () => {
 };
 
 const ProductsCard = ({ product }) => {
+  
+  const navigate = useNavigate();
+
   return (
-    <div className="group bg-gray-700 rounded-lg text-white">
-      <img
+    <div onClick={() => navigate(`/product/${product.id}`)} className="group bg-gray-700 rounded-lg text-white">
+     
+      <img 
         className="aspect-square object-contain p-4"
         src={product.image}
         alt=""
