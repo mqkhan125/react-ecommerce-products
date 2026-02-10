@@ -25,7 +25,7 @@ const Product = () => {
 
 
   return (
-    <div className="grid grid-cols-5 gap-4 p-6 bg-[#0c0c0c]">
+    <div className="grid grid-cols-5 gap-4 p-6 bg-[#0c0c0c] max-[1200px]:grid-cols-4 max-[900px]:grid-cols-3 max-[700px]:grid-cols-2 max-[500px]:grid-cols-1">
       {products.map((product) => {
         return <ProductsCard product={product} key={product.id} />;
       })}
@@ -41,7 +41,7 @@ const ProductsCard = ({ product }) => {
    <div
      onClick={() => navigate(`/product/${product.id}`)}
      className="group cursor-pointer bg-gray-800 rounded-xl overflow-hidden text-white 
-               shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
+               shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 "
    >
      {/* Image */}
      <div className="bg-gray-900 flex justify-center items-center p-4">
