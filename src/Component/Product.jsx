@@ -23,7 +23,6 @@ const Product = () => {
 
   if(loading) return <Loader className={'p-30'}/>
 
-
   return (
     <div className="grid grid-cols-5 gap-4 p-6 bg-[#0c0c0c] max-[1200px]:grid-cols-4 max-[900px]:grid-cols-3 max-[700px]:grid-cols-2 max-[500px]:grid-cols-1">
       {products.map((product) => {

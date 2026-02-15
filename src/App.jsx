@@ -7,6 +7,7 @@ const App = () => {
     <>
     <Navbar />
     <Outlet />
+    {/* <Home /> */}
     </>
   );
 };
