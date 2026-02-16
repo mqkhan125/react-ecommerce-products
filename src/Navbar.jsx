@@ -1,8 +1,9 @@
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({search, handleSearch}) => {
   const navigate = useNavigate();
+ 
 
   return (
     <nav className="sticky top-0 z-50 bg-[#0c0c0c] text-white shadow-md">
@@ -32,7 +33,7 @@ const Navbar = () => {
             type="text"
             placeholder="Search..."
             className="hidden md:block bg-gray-800 px-4 py-2 rounded-lg outline-none focus:ring-2 focus:ring-blue-500 transition"
-          />
+           onChange={handleSearch} value={search}/>
 
    
           <select className="hidden md:block bg-gray-800 px-3 py-2 rounded-lg outline-none focus:ring-2 focus:ring-blue-500 transition">
