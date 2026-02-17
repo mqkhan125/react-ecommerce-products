@@ -1,8 +1,9 @@
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 
-const Navbar = ({search, handleSearch}) => {
+const Navbar = ({search, handleSearch, category, handleInputCategory}) => {
   const navigate = useNavigate();
+  
  
 
   return (
@@ -27,7 +28,7 @@ const Navbar = ({search, handleSearch}) => {
           <Menu to="/product" title="Products" />
         </div>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-5">
  
           <input
             type="text"
@@ -36,16 +37,16 @@ const Navbar = ({search, handleSearch}) => {
            onChange={handleSearch} value={search}/>
 
    
-          <select className="hidden md:block bg-gray-800 px-3 py-2 rounded-lg outline-none focus:ring-2 focus:ring-blue-500 transition">
-            <option value="">All</option>
+          <select value={category} onChange={handleInputCategory} className="hidden md:block bg-gray-800 px-3 py-2 rounded-lg outline-none focus:ring-2 focus:ring-blue-500 transition">
+            <option value="all">All Category</option>
             <option value="electronics">Electronics</option>
             <option value="jewelery">Jewelery</option>
-            <option value="men">Men</option>
-            <option value="women">Women</option>
+            <option value="Men's Clothing">Men</option>
+            <option value="Women's Clothing">Women</option>
           </select>
 
 
-          <div className="relative cursor-pointer">
+          <div className="relative cursor-pointer ml-2">
             <span className="absolute -top-2 -right-2 bg-blue-600 text-xs px-1.5 py-0.5 rounded-full">
               0
             </span>

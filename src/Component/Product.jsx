@@ -7,12 +7,23 @@ const Product = () => {
   const [products, setProducts] = useState([]);
   const [loading , setLoading] = useState(false);
 
-  const {search} = useOutletContext()
-  const filteredProducts = products.filter((product) =>
-      product.title.toLowerCase().includes(search.toLowerCase()) ||
-      product.category.toLowerCase().includes(search.toLowerCase()),
-  );
+  const { search, category } = useOutletContext();
 
+  // Filter products based on search text AND category
+  const filteredProducts = products.filter((product) => {
+    const matchesSearch =
+      product.title.toLowerCase().includes(search.toLowerCase()) ||
+      product.category.toLowerCase().includes(search.toLowerCase());
+
+    const matchesCategory =
+      category === "all" ||
+      product.category.toLowerCase() === category.toLowerCase();
+
+    return matchesSearch && matchesCategory;
+  });
+
+
+  
 
   const fetchProducts = async () => {
     try {

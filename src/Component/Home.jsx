@@ -38,6 +38,7 @@ const Home = () => {
               performance. Quality meets affordability in every collection.
             </p>
 
+            
             <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
               <button
                 onClick={() => navigate("/product")}
@@ -76,26 +77,27 @@ const Home = () => {
             className="group relative bg-gradient-to-br from-gray-800 to-gray-900 p-10 rounded-2xl text-center cursor-pointer 
             overflow-hidden transition-all duration-300 hover:-translate-y-3 hover:shadow-2xl"
           >
-            {/* Glow Hover Effect */}
+            
             <div className="absolute inset-0 bg-blue-600/0 group-hover:bg-blue-600/10 transition duration-300 rounded-2xl"></div>
 
-            {/* Icon */}
+         
             <div className="text-4xl mb-4 transition duration-300 group-hover:scale-110">
               {cat.icon}
             </div>
 
-            {/* Title */}
             <h3 className="text-lg font-semibold tracking-wide group-hover:text-blue-400 transition">
               {cat.name}
             </h3>
 
-            {/* Small Description */}
+     
             <p className="text-sm text-gray-400 mt-2 opacity-80">
               Explore premium collection
             </p>
           </div>
         ))}
       </div>
+
+   
     </>
   );
 };
