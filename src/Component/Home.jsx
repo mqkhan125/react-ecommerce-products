@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import ProductsCard from "./ProductCard";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -38,7 +39,6 @@ const Home = () => {
               performance. Quality meets affordability in every collection.
             </p>
 
-            
             <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
               <button
                 onClick={() => navigate("/product")}
@@ -47,7 +47,7 @@ const Home = () => {
                 Shop Now
               </button>
 
-              <button className="px-8 py-3 rounded-xl border border-gray-600 hover:bg-gray-800 transition duration-300 text-lg">
+              <button className="px-8 py-3 rounded-xl border border-gray-600 hover:bg-gray-800 transition duration-300 text-lg text-black">
                 Explore More
               </button>
             </div>
@@ -65,6 +65,9 @@ const Home = () => {
       </section>
 
       {/* Categories */}
+      <h2 className="text-3xl font-semibold text-center mt-16 mb-6">
+        Product Categories
+      </h2>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-7xl mx-auto p-6">
         {[
           { name: "Electronics", icon: "💻" },
@@ -77,10 +80,8 @@ const Home = () => {
             className="group relative bg-gradient-to-br from-gray-800 to-gray-900 p-10 rounded-2xl text-center cursor-pointer 
             overflow-hidden transition-all duration-300 hover:-translate-y-3 hover:shadow-2xl"
           >
-            
             <div className="absolute inset-0 bg-blue-600/0 group-hover:bg-blue-600/10 transition duration-300 rounded-2xl"></div>
 
-         
             <div className="text-4xl mb-4 transition duration-300 group-hover:scale-110">
               {cat.icon}
             </div>
@@ -89,7 +90,6 @@ const Home = () => {
               {cat.name}
             </h3>
 
-     
             <p className="text-sm text-gray-400 mt-2 opacity-80">
               Explore premium collection
             </p>
@@ -97,7 +97,159 @@ const Home = () => {
         ))}
       </div>
 
-   
+      {/* Featured Products */}
+      <section className="py-20 px-6">
+        <h2 className="text-3xl font-semibold text-center mb-12">
+          Featured Products
+        </h2>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+          {featured.map((product) => (
+            <ProductsCard key={product.id} product={product} />
+          ))}
+        </div>
+      </section>
+
+      {/* Why Choose Us */}
+      <section className="py-24 bg-[#0c0c0c] text-white px-6">
+        {/* Heading */}
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold mb-4">
+            Why Choose <span className="text-blue-500">ShopZone</span>
+          </h2>
+          <p className="text-gray-400 max-w-2xl mx-auto">
+            We provide the best shopping experience with premium products, fast
+            delivery, and secure payments.
+          </p>
+        </div>
+
+        {/* Cards */}
+        <div className="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
+          {/* Card 1 */}
+          <div
+            className="group bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-2xl text-center
+    hover:-translate-y-3 transition duration-300 shadow-lg hover:shadow-blue-500/20"
+          >
+            {/* Icon */}
+            <div
+              className="w-16 h-16 mx-auto mb-6 flex items-center justify-center
+      bg-blue-600/10 rounded-full text-3xl group-hover:scale-110 transition"
+            >
+              🚚
+            </div>
+
+            <h3 className="text-xl font-semibold mb-3 group-hover:text-blue-400 transition">
+              Fast Delivery
+            </h3>
+
+            <p className="text-gray-400 text-sm">
+              Get your products delivered quickly and safely anywhere in the
+              world.
+            </p>
+          </div>
+
+          {/* Card 2 */}
+          <div
+            className="group bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-2xl text-center
+    hover:-translate-y-3 transition duration-300 shadow-lg hover:shadow-blue-500/20"
+          >
+            <div
+              className="w-16 h-16 mx-auto mb-6 flex items-center justify-center
+      bg-blue-600/10 rounded-full text-3xl group-hover:scale-110 transition"
+            >
+              💳
+            </div>
+
+            <h3 className="text-xl font-semibold mb-3 group-hover:text-blue-400 transition">
+              Secure Payment
+            </h3>
+
+            <p className="text-gray-400 text-sm">
+              Your transactions are fully encrypted and protected for safe
+              checkout.
+            </p>
+          </div>
+
+          {/* Card 3 */}
+          <div
+            className="group bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-2xl text-center
+    hover:-translate-y-3 transition duration-300 shadow-lg hover:shadow-blue-500/20"
+          >
+            <div
+              className="w-16 h-16 mx-auto mb-6 flex items-center justify-center
+      bg-blue-600/10 rounded-full text-3xl group-hover:scale-110 transition"
+            >
+              ⭐
+            </div>
+
+            <h3 className="text-xl font-semibold mb-3 group-hover:text-blue-400 transition">
+              Premium Quality
+            </h3>
+
+            <p className="text-gray-400 text-sm">
+              We carefully select high-quality products to ensure customer
+              satisfaction.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Newsletter */}
+      <section className="py-24 px-6 bg-gradient-to-b from-[#0c0c0c] to-[#111827] text-white">
+        <div className="max-w-3xl mx-auto text-center">
+          {/* Heading */}
+          <h2 className="text-4xl font-bold mb-4">
+            Subscribe to Our Newsletter
+          </h2>
+
+          {/* Subtext */}
+          <p className="text-gray-400 mb-8">
+            Get the latest products, exclusive offers, and updates delivered to
+            your inbox.
+          </p>
+
+          {/* Input + Button */}
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-0">
+            <input
+              type="email"
+              placeholder="Enter your email address"
+              className="
+          w-full sm:w-96 px-5 py-4
+          bg-gray-800/80 backdrop-blur-sm
+          border border-gray-700
+          sm:rounded-l-xl sm:rounded-r-none rounded-xl
+          outline-none
+          focus:ring-2 focus:ring-blue-500
+          focus:border-blue-500
+          transition-all duration-300
+        "
+            />
+
+            <button
+              className="
+              ms-8
+          w-full sm:w-auto
+          px-8 py-4
+          bg-gradient-to-r from-blue-600 to-blue-500
+          hover:from-blue-500 hover:to-blue-400
+          sm:rounded-r-xl sm:rounded-l-none rounded-xl
+          font-semibold
+          shadow-lg shadow-blue-600/20
+          hover:shadow-blue-500/40
+          hover:scale-105
+          transition-all duration-300
+        "
+            >
+              Subscribe
+            </button>
+          </div>
+
+          {/* Small note */}
+          <p className="text-gray-500 text-sm mt-4">
+            We respect your privacy. Unsubscribe anytime.
+          </p>
+        </div>
+      </section>
     </>
   );
 };
