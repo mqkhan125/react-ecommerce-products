@@ -3,10 +3,6 @@
 A modern and responsive React E-Commerce web application built using React, Tailwind CSS, React Router, and FakeStore API.
 This project demonstrates real-world e-commerce functionality including product listing, product details, category filtering, and global search with a clean and professional UI.
 
-🚀 Live Demo
-
-👉 http://localhost:5173/
-
 📸 UI Preview
 
 🏠 Home Page
